@@ -1,0 +1,101 @@
+name: plan-de-mejoramiento
+
+# ============================================================
+# Entorno de DESARROLLO local.
+# Levanta MongoDB, MinIO (S3), la API (Express) y el SPA (Vite).
+#
+#   docker compose up --build
+#
+# Web:  http://localhost:5173
+# API:  http://localhost:3001  (docs: /api-docs, health: /health)
+# S3:   http://localhost:9000  (consola: http://localhost:9001)
+#
+# Las credenciales de aqui son SOLO para desarrollo local.
+# ============================================================
+
+services:
+  mongo:
+    image: mongo:7
+    container_name: ip-mongo
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+    healthcheck:
+      test: ["CMD", "mongosh", "--quiet", "--eval", "db.adminCommand('ping')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+  minio:
+    image: minio/minio:latest
+    container_name: ip-minio
+    restart: unless-stopped
+    command: server /data --console-address ":9001"
+    environment:
+      MINIO_ROOT_USER: minioadmin
+      MINIO_ROOT_PASSWORD: minioadmin
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    volumes:
+      - minio_data:/data
+    healthcheck:
+      test: ["CMD", "mc", "ready", "local"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  api:
+    build:
+      context: ./api-improvement-plan
+      target: development
+    container_name: ip-api
+    restart: unless-stopped
+    command: sh -c "node src/config/swagger.js && npm run dev"
+    volumes:
+      - ./api-improvement-plan:/app
+      - api_node_modules:/app/node_modules
+    environment:
+      PORT: "3001"
+      MONGODB_URI: mongodb://mongo:27017/improvement_plan
+      JWT_SECRET: change-me-in-production
+      FRONTEND_URL: http://localhost:5173
+      S3_ENDPOINT: http://minio:9000
+      S3_REGION: us-east-1
+      S3_ACCESS_KEY_ID: minioadmin
+      S3_SECRET_ACCESS_KEY: minioadmin
+      S3_BUCKET: improvement-plan
+      S3_FORCE_PATH_STYLE: "true"
+    ports:
+      - "3001:3001"
+    depends_on:
+      mongo:
+        condition: service_healthy
+      minio:
+        condition: service_started
+
+  web:
+    image: node:22-alpine
+    container_name: ip-web
+    working_dir: /app
+    restart: unless-stopped
+    command: sh -c "npm install --legacy-peer-deps && npm run dev -- --host 0.0.0.0"
+    volumes:
+      - ./front-improvement-plan:/app
+      - web_node_modules:/app/node_modules
+    environment:
+      VITE_URL_BACKEND: http://localhost:3001
+      VITE_API_LOGIN: http://localhost:3001/api/users/sso-login
+    ports:
+      - "5173:5173"
+    depends_on:
+      - api
+
+volumes:
+  mongo_data:
+  minio_data:
+  api_node_modules:
+  web_node_modules:

@@ -1,0 +1,16 @@
+# Contexto de build del frontend
+node_modules
+dist
+dist-ssr
+*.local
+
+# Logs
+*.log
+npm-debug.log*
+
+# Git / editor
+.git
+.gitignore
+.idea
+.vscode
+.DS_Store

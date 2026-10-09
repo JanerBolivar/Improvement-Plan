@@ -1,0 +1,20 @@
+# Contexto de build del backend
+node_modules
+npm-debug.log*
+
+# Nunca copiar secretos al contexto/imagen
+.env
+.env.*
+!.env.example
+
+# Artefactos generados en el host (se regeneran en la etapa build)
+src/docs/openapi.json
+src/uploads
+src/public
+
+# Git / docs / docker
+.git
+.gitignore
+AGENTS.md
+Dockerfile
+.dockerignore

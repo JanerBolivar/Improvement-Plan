@@ -1,0 +1,51 @@
+LICENCIA DE SOFTWARE PROPIETARIO
+================================
+
+Copyright (c) 2026 Ciides S.A.S. BIC Todos los derechos reservados.
+
+Desarrollado por Ciides S.A.S. BIC (https://ciidesbic.org) para la Universidad de la Amazonia, Colombia.
+
+Sistema: "Plan de Mejoramiento" para el seguimiento y aseguramiento de la calidad de los
+programas academicos de la Universidad de la Amazonia.
+
+1. PROPIEDAD INTELECTUAL
+   El codigo fuente, la documentacion, los disenos, los logotipos y cualquier otro
+   componente de este software (en adelante, "el Software") son propiedad exclusiva de
+   Ciides S.A.S. BIC y/o de sus licenciantes. Todos los derechos no otorgados expresamente
+   en esta licencia quedan reservados.
+
+2. ALCANCE DEL USO
+   El Software se proporciona a la Universidad de la Amazonia para su uso interno en el
+   seguimiento y aseguramiento de la calidad de sus programas academicos. Salvo
+   autorizacion escrita de Ciides S.A.S. BIC, queda prohibido:
+
+   a) Copiar, distribuir, publicar, sublicenciar, vender, alquilar o transferir el
+      Software, total o parcialmente, a terceros.
+   b) Modificar, descompilar, aplicar ingenieria inversa o crear obras derivadas.
+   c) Usar el Software para fines distintos a los autorizados.
+
+3. CONFIDENCIALIDAD
+   El Software y su documentacion se consideran informacion confidencial. El usuario se
+   compromete a mantener su confidencialidad y a no divulgarla sin autorizacion previa
+   por escrito de Ciides S.A.S. BIC
+
+4. SIN GARANTIA
+   EL SOFTWARE SE PROPORCIONA "TAL CUAL", SIN GARANTIA DE NINGUN TIPO, EXPRESA O IMPLICITA,
+   INCLUYENDO, ENTRE OTRAS, LAS GARANTIAS DE COMERCIABILIDAD, IDONEIDAD PARA UN PROPOSITO
+   PARTICULAR Y NO INFRACCION.
+
+5. LIMITACION DE RESPONSABILIDAD
+   EN NINGUN CASO CIIDES S.A.S. BIC SERA RESPONSABLE DE DAÑOS DIRECTOS, INDIRECTOS,
+   INCIDENTALES, ESPECIALES, EJEMPLARES O CONSECUENTES DERIVADOS DEL USO O LA
+   IMPOSIBILIDAD DE USO DEL SOFTWARE.
+
+6. VIGENCIA
+   Esta licencia permanece vigente mientras se cumplan sus terminos. Su incumplimiento
+   faculta a Ciides S.A.S. BIC a darla por terminada de inmediato.
+
+Para consultas sobre licenciamiento, contacte a Ciides S.A.S. BIC
+
+---
+
+NOTA: Si el proyecto requiere una licencia de codigo abierto (por ejemplo, MIT), reemplace
+este archivo en su totalidad por el texto de la licencia elegida.

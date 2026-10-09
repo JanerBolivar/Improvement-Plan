@@ -1,0 +1,87 @@
+# ============================================================
+# Monorepo: Plan de Mejoramiento  (Ciides S.A.S. BIC - https://ciidesbic.org)
+# Universidad de la Amazonia
+# ============================================================
+# Objetivo: NO versionar secretos, dependencias ni artefactos
+# generados. Solo código fuente, configuración de ejemplo y docs.
+# ============================================================
+
+# ---- Secretos / entorno ----
+# Nunca subir credenciales reales. Solo se conservan los *.example.
+.env
+.env.*
+!.env.example
+!.env.*.example
+*.pem
+*.key
+*.p12
+
+# ---- Dependencias ----
+node_modules/
+.npm/
+.pnpm-store/
+.yarn/
+
+# ---- Build / salida ----
+dist/
+dist-ssr/
+build/
+out/
+*.tsbuildinfo
+
+# ---- Lockfiles redundantes ----
+# npm workspaces usa el package-lock.json de la RAÍZ (ese SÍ se versiona).
+api-improvement-plan/package-lock.json
+front-improvement-plan/package-lock.json
+pnpm-lock.yaml
+yarn.lock
+
+# ---- Backend: artefactos generados y locales ----
+# Especificación OpenAPI generada con `npm run docs:api`
+api-improvement-plan/src/docs/openapi.json
+# Subidas locales y recursos estáticos legacy (los archivos viven en S3/MinIO)
+api-improvement-plan/src/uploads/
+api-improvement-plan/src/uploads/.*
+api-improvement-plan/src/public/
+
+# ---- Logs ----
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# ---- Node ----
+*.pid
+*.seed
+*.pid.lock
+.npmrc.local
+
+# ---- Cobertura de tests ----
+coverage/
+.nyc_output/
+
+# ---- Editores / SO ----
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# ---- Cache de herramientas ----
+.eslintcache
+.cache/
+.parcel-cache/
+*.local
+
+# ---- Docker ----
+docker-compose.override.yml

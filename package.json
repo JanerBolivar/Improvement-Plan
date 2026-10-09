@@ -1,0 +1,43 @@
+{
+  "name": "plan-de-mejoramiento",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Monorepo del sistema Plan de Mejoramiento (API REST + SPA) para el seguimiento y aseguramiento de la calidad de los programas academicos de la Universidad de la Amazonia. Desarrollado por Ciides S.A.S. BIC",
+  "keywords": [
+    "monorepo",
+    "plan-de-mejoramiento",
+    "calidad",
+    "universidad-de-la-amazonia",
+    "ciides",
+    "express",
+    "react"
+  ],
+  "author": "Ciides S.A.S. BIC",
+  "license": "UNLICENSED",
+  "homepage": "https://ciidesbic.org",
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "workspaces": [
+    "api-improvement-plan",
+    "front-improvement-plan"
+  ],
+  "scripts": {
+    "dev": "concurrently -k -n API,WEB -c blue,green \"npm:dev:api\" \"npm:dev:front\"",
+    "dev:api": "npm run dev --workspace api-improvement-plan",
+    "dev:front": "npm run dev --workspace front-improvement-plan",
+    "start": "npm start --workspace api-improvement-plan",
+    "build": "npm run build --workspace front-improvement-plan",
+    "preview": "npm run preview --workspace front-improvement-plan",
+    "lint": "npm run lint --workspace front-improvement-plan",
+    "test": "npm test --workspace api-improvement-plan",
+    "docs:api": "npm run docs:generate --workspace api-improvement-plan",
+    "docker:up": "docker compose up --build",
+    "docker:down": "docker compose down",
+    "docker:reset": "docker compose down -v"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}
